@@ -1,0 +1,40 @@
+[
+  {"name":"Mobile Legends","category":"MOBA","image":"https://i.imgur.com/8QZQZQZ.png","nominals":["86 Diamonds","172 Diamonds","257 Diamonds","344 Diamonds","706 Diamonds","Twilight Pass"]},
+  {"name":"Arena of Valor","category":"MOBA","image":"https://i.imgur.com/5e5e5e5.png","nominals":["40 Vouchers","90 Vouchers","230 Vouchers"]},
+  {"name":"League of Legends Wild Rift","category":"MOBA","image":"https://i.imgur.com/6f6f6f6.png","nominals":["425 Wild Cores","1000 Wild Cores","1850 Wild Cores"]},
+  {"name":"Honor of Kings","category":"MOBA","image":"https://i.imgur.com/hok.png","nominals":["60 Tokens","300 Tokens","980 Tokens"]},
+  {"name":"Marvel Super War","category":"MOBA","image":"https://i.imgur.com/msw.png","nominals":["55 Star Credits","275 Star Credits"]},
+
+  {"name":"Free Fire","category":"FPS","image":"https://i.imgur.com/D9q9Z0U.png","nominals":["70 Diamonds","140 Diamonds","355 Diamonds","720 Diamonds","Membership Mingguan"]},
+  {"name":"PUBG Mobile","category":"FPS","image":"https://i.imgur.com/Xn8Xq6D.png","nominals":["60 UC","325 UC","660 UC","1800 UC"]},
+  {"name":"Call of Duty Mobile","category":"FPS","image":"https://i.imgur.com/1a1a1a1.png","nominals":["80 CP","420 CP","880 CP","2400 CP"]},
+  {"name":"Valorant","category":"FPS","image":"https://i.imgur.com/0y0y0y0.png","nominals":["125 VP","420 VP","700 VP","1375 VP","2400 VP"]},
+  {"name":"Point Blank","category":"FPS","image":"https://i.imgur.com/pb.png","nominals":["1200 PB Cash","2400 PB Cash"]},
+
+  {"name":"Genshin Impact","category":"RPG","image":"https://i.imgur.com/Y6J7ZQH.png","nominals":["Blessing Welkin","300 Genesis","980 Genesis","1980 Genesis","3280 Genesis"]},
+  {"name":"Honkai Star Rail","category":"RPG","image":"https://i.imgur.com/2b2b2b2.png","nominals":["Supply Pass","300 Oneiric","980 Oneiric"]},
+  {"name":"Tower of Fantasy","category":"RPG","image":"https://i.imgur.com/tftftf.png","nominals":["Monthly Pass","980 Tanium","1980 Tanium"]},
+  {"name":"One Punch Man","category":"RPG","image":"https://i.imgur.com/opmopm.png","nominals":["Weekly Pack","Monthly Pack"]},
+  {"name":"Dragon Raja","category":"RPG","image":"https://i.imgur.com/dr.png","nominals":["60 Coupons","300 Coupons"]},
+
+  {"name":"Clash of Clans","category":"STRATEGY","image":"https://i.imgur.com/3c3c3c3.png","nominals":["Gold Pass","500 Gems","1200 Gems","2500 Gems"]},
+  {"name":"Clash Royale","category":"STRATEGY","image":"https://i.imgur.com/4d4d4d4.png","nominals":["500 Gems","1200 Gems","Pass Royale"]},
+  {"name":"Rise of Kingdoms","category":"STRATEGY","image":"https://i.imgur.com/rokrok.png","nominals":["Daily Chest","Monthly Bundle"]},
+  {"name":"State of Survival","category":"STRATEGY","image":"https://i.imgur.com/sossos.png","nominals":["Value Pack","Hero Pack"]},
+  {"name":"Lords Mobile","category":"STRATEGY","image":"https://i.imgur.com/lm.png","nominals":["499 Diamonds","999 Diamonds"]},
+
+  {"name":"FC Mobile","category":"SPORTS","image":"https://i.imgur.com/7g7g7g7.png","nominals":["220 FC Points","575 FC Points","2200 FC Points"]},
+  {"name":"eFootball","category":"SPORTS","image":"https://i.imgur.com/8h8h8h8.png","nominals":["130 Coins","550 Coins","1040 Coins"]},
+  {"name":"NBA 2K Mobile","category":"SPORTS","image":"https://i.imgur.com/nba2k.png","nominals":["Starter Pack","Pro Pack"]},
+  {"name":"Top Eleven","category":"SPORTS","image":"https://i.imgur.com/te.png","nominals":["50 Tokens","200 Tokens"]},
+
+  {"name":"Roblox","category":"SANDBOX","image":"https://i.imgur.com/9i9i9i9.png","nominals":["400 Robux","800 Robux","1700 Robux"]},
+  {"name":"Minecraft","category":"SANDBOX","image":"https://i.imgur.com/mcmcmc.png","nominals":["Minecoins 320","Minecoins 960"]},
+  {"name":"Growtopia","category":"SANDBOX","image":"https://i.imgur.com/gt.png","nominals":["500 Gems","1100 Gems"]},
+  {"name":"The Sims FreePlay","category":"SANDBOX","image":"https://i.imgur.com/sims.png","nominals":["LP Pack","SP Pack"]},
+
+  {"name":"Stumble Guys","category":"CASUAL","image":"https://i.imgur.com/stumbl.png","nominals":["250 Gems","800 Gems"]},
+  {"name":"Among Us","category":"CASUAL","image":"https://i.imgur.com/among.png","nominals":["Stars Pack"]},
+  {"name":"Sausage Man","category":"CASUAL","image":"https://i.imgur.com/sm.png","nominals":["60 Candy","300 Candy"]},
+  {"name":"Hay Day","category":"CASUAL","image":"https://i.imgur.com/hd.png","nominals":["Diamonds 130","Diamonds 570"]}
+]
