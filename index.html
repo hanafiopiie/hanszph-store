@@ -75,7 +75,16 @@
 
 <script>
   function orderWA(){
-    const text = encodeURIComponent('Halo Admin Hanszph Store,%0ASaya mau top up game (PROSES MANUAL)%0A%0AGame:%0AUser ID:%0ANominal:%0ANomor WhatsApp:%0A%0ATerima kasih.');
+    const message = `Halo Admin Hanszph Store,
+Saya mau top up game (PROSES MANUAL)
+
+Game:
+User ID:
+Nominal:
+Nomor WhatsApp:
+
+Terima kasih.`;
+    const text = encodeURIComponent(message);
     window.open('https://wa.me/6287888117771?text=' + text);
   }
 </script>
