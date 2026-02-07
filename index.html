@@ -3,101 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hanszph Store - Top Up Game</title>
-
+  <title>Hanszph Store – Top Up Game Cepat & Aman</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff7f0;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: orange;
-      color: white;
-      padding: 16px;
-      text-align: center;
-    }
-    .container {
-      max-width: 420px;
-      margin: 20px auto;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input, select, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      font-size: 14px;
-    }
-    button {
-      background: orange;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      font-size: 12px;
-      margin: 20px 0;
-      color: #666;
-    }
+    body {margin:0;font-family:Arial,Helvetica,sans-serif;background:#0f172a;color:#e5e7eb}
+    header {background:#020617;padding:20px;text-align:center}
+    header h1 {margin:0;color:#f97316}
+    header p {margin:5px 0 0;color:#cbd5f5}
+    .container {padding:30px}
+    .games {display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px}
+    .game {background:#020617;border-radius:12px;padding:15px;text-align:center;cursor:pointer;transition:.3s}
+    .game:hover {transform:scale(1.05);background:#020617ee}
+    .game img {width:100%;border-radius:10px}
+    .game h3 {margin:10px 0 0;font-size:16px}
+    .section {margin-top:50px}
+    .order {background:#020617;border-radius:12px;padding:20px;max-width:500px;margin:auto}
+    .order input,.order select {width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none}
+    .order button {width:100%;padding:14px;border:none;border-radius:8px;background:#f97316;color:#020617;font-weight:bold;font-size:16px;cursor:pointer}
+    .order button:hover {background:#0ea5e9}
+    footer {text-align:center;padding:20px;background:#020617;color:#94a3b8;margin-top:60px}
   </style>
 </head>
-
 <body>
 
 <header>
-  <h2>Hanszph Store</h2>
-  <p>Top Up Cepat & Aman (Manual)</p>
+  <h1>HANSZPH STORE</h1>
+  <p>Top Up Cepat & Aman • Proses Manual</p>
 </header>
 
 <div class="container">
-  <label>Game</label>
-<select id="game">
-  <option>Mobile Legends</option>
-  <option>Free Fire</option>
-  <option>PUBG Mobile</option>
-  <option>Genshin Impact</option>
-  <option>Honkai Star Rail</option>
-  <option>Valorant</option>
-  <option>Call of Duty Mobile</option>
-  <option>League of Legends: Wild Rift</option>
-  <option>Clash of Clans</option>
-  <option>Arena of Valor</option>
-  <option>FC Mobile</option>
-  <option>eFootball</option>
-</select>
+  <h2>Pilih Game</h2><p style="color:#fdba74">⚠️ Semua transaksi diproses secara manual oleh admin (tanpa sistem otomatis).</p>
+  <div class="games">
+    <!-- MOBA & Battle -->
+    <div class="game" onclick="selectGame('Mobile Legends')"><img src="https://i.imgur.com/8QZQZQZ.png"><h3>Mobile Legends</h3></div>
+    <div class="game" onclick="selectGame('Arena of Valor')"><img src="https://i.imgur.com/5e5e5e5.png"><h3>Arena of Valor</h3></div>
+    <div class="game" onclick="selectGame('League of Legends Wild Rift')"><img src="https://i.imgur.com/6f6f6f6.png"><h3>LoL Wild Rift</h3></div>
 
+    <!-- Shooter -->
+    <div class="game" onclick="selectGame('Free Fire')"><img src="https://i.imgur.com/D9q9Z0U.png"><h3>Free Fire</h3></div>
+    <div class="game" onclick="selectGame('PUBG Mobile')"><img src="https://i.imgur.com/Xn8Xq6D.png"><h3>PUBG Mobile</h3></div>
+    <div class="game" onclick="selectGame('Call of Duty Mobile')"><img src="https://i.imgur.com/1a1a1a1.png"><h3>Call of Duty Mobile</h3></div>
+    <div class="game" onclick="selectGame('Valorant')"><img src="https://i.imgur.com/0y0y0y0.png"><h3>Valorant</h3></div>
 
-  </select>
+    <!-- RPG / Anime -->
+    <div class="game" onclick="selectGame('Genshin Impact')"><img src="https://i.imgur.com/Y6J7ZQH.png"><h3>Genshin Impact</h3></div>
+    <div class="game" onclick="selectGame('Honkai Star Rail')"><img src="https://i.imgur.com/2b2b2b2.png"><h3>Honkai Star Rail</h3></div>
+    <div class="game" onclick="selectGame('Tower of Fantasy')"><img src="https://i.imgur.com/tftftf.png"><h3>Tower of Fantasy</h3></div>
+    <div class="game" onclick="selectGame('One Punch Man')"><img src="https://i.imgur.com/opmopm.png"><h3>One Punch Man</h3></div>
 
-  <label>User ID</label>
-  <input type="text" id="userid" placeholder="Masukkan User ID" />
+    <!-- Strategy -->
+    <div class="game" onclick="selectGame('Clash of Clans')"><img src="https://i.imgur.com/3c3c3c3.png"><h3>Clash of Clans</h3></div>
+    <div class="game" onclick="selectGame('Clash Royale')"><img src="https://i.imgur.com/4d4d4d4.png"><h3>Clash Royale</h3></div>
+    <div class="game" onclick="selectGame('Rise of Kingdoms')"><img src="https://i.imgur.com/rokrok.png"><h3>Rise of Kingdoms</h3></div>
+    <div class="game" onclick="selectGame('State of Survival')"><img src="https://i.imgur.com/sossos.png"><h3>State of Survival</h3></div>
 
-  <label>Nominal</label>
-  <select id="nominal">
-  <option>50 Diamonds</option>
-  <option>86 Diamonds</option>
-  <option>172 Diamonds</option>
-  <option>257 Diamonds</option>
-  <option>344 Diamonds</option>
-  <option>429 Diamonds</option>
-  <option>514 Diamonds</option>
-  <option>706 Diamonds</option>
-  <option>1000+ Diamonds</option>
-  <option>Weekly Pass</option>
-  <option>Monthly Pass</option>
-</select>
+    <!-- Sports -->
+    <div class="game" onclick="selectGame('FC Mobile')"><img src="https://i.imgur.com/7g7g7g7.png"><h3>FC Mobile</h3></div>
+    <div class="game" onclick="selectGame('eFootball')"><img src="https://i.imgur.com/8h8h8h8.png"><h3>eFootball</h3></div>
+    <div class="game" onclick="selectGame('NBA 2K Mobile')"><img src="https://i.imgur.com/nba2k.png"><h3>NBA 2K Mobile</h3></div>
 
+    <!-- Sandbox & Casual -->
+    <div class="game" onclick="selectGame('Roblox')"><img src="https://i.imgur.com/9i9i9i9.png"><h3>Roblox</h3></div>
+    <div class="game" onclick="selectGame('Minecraft')"><img src="https://i.imgur.com/mcmcmc.png"><h3>Minecraft</h3></div>
+    <div class="game" onclick="selectGame('Stumble Guys')"><img src="https://i.imgur.com/stumbl.png"><h3>Stumble Guys</h3></div>
+    <div class="game" onclick="selectGame('Among Us')"><img src="https://i.imgur.com/among.png"><h3>Among Us</h3></div>
+  </div>
+    <div class="game" onclick="selectGame('Free Fire')"><img src="https://i.imgur.com/D9q9Z0U.png"><h3>Free Fire</h3></div>
+    <div class="game" onclick="selectGame('PUBG Mobile')"><img src="https://i.imgur.com/Xn8Xq6D.png"><h3>PUBG Mobile</h3></div>
+    <div class="game" onclick="selectGame('Genshin Impact')"><img src="https://i.imgur.com/Y6J7ZQH.png"><h3>Genshin Impact</h3></div>
+    <div class="game" onclick="selectGame('Honkai Star Rail')"><img src="https://i.imgur.com/2b2b2b2.png"><h3>Honkai Star Rail</h3></div>
+    <div class="game" onclick="selectGame('Valorant')"><img src="https://i.imgur.com/0y0y0y0.png"><h3>Valorant</h3></div>
+    <div class="game" onclick="selectGame('Call of Duty Mobile')"><img src="https://i.imgur.com/1a1a1a1.png"><h3>Call of Duty Mobile</h3></div>
+    <div class="game" onclick="selectGame('Clash of Clans')"><img src="https://i.imgur.com/3c3c3c3.png"><h3>Clash of Clans</h3></div>
+    <div class="game" onclick="selectGame('Clash Royale')"><img src="https://i.imgur.com/4d4d4d4.png"><h3>Clash Royale</h3></div>
+    <div class="game" onclick="selectGame('Arena of Valor')"><img src="https://i.imgur.com/5e5e5e5.png"><h3>Arena of Valor</h3></div>
+    <div class="game" onclick="selectGame('League of Legends Wild Rift')"><img src="https://i.imgur.com/6f6f6f6.png"><h3>LoL Wild Rift</h3></div>
+    <div class="game" onclick="selectGame('FC Mobile')"><img src="https://i.imgur.com/7g7g7g7.png"><h3>FC Mobile</h3></div>
+    <div class="game" onclick="selectGame('eFootball')"><img src="https://i.imgur.com/8h8h8h8.png"><h3>eFootball</h3></div>
+    <div class="game" onclick="selectGame('Roblox')"><img src="https://i.imgur.com/9i9i9i9.png"><h3>Roblox</h3></div>
+  </div>
+    <div class="game" onclick="selectGame('Free Fire')"><img src="https://i.imgur.com/D9q9Z0U.png"><h3>Free Fire</h3></div>
+    <div class="game" onclick="selectGame('PUBG Mobile')"><img src="https://i.imgur.com/Xn8Xq6D.png"><h3>PUBG Mobile</h3></div>
+    <div class="game" onclick="selectGame('Genshin Impact')"><img src="https://i.imgur.com/Y6J7ZQH.png"><h3>Genshin Impact</h3></div>
+    <div class="game" onclick="selectGame('Valorant')"><img src="https://i.imgur.com/0y0y0y0.png"><h3>Valorant</h3></div>
+    <div class="game" onclick="selectGame('Call of Duty Mobile')"><img src="https://i.imgur.com/1a1a1a1.png"><h3>Call of Duty</h3></div>
+  </div>
+    <div class="game"><img src="https://i.imgur.com/D9q9Z0U.png"><h3>Free Fire</h3></div>
+    <div class="game"><img src="https://i.imgur.com/Xn8Xq6D.png"><h3>PUBG Mobile</h3></div>
+    <div class="game"><img src="https://i.imgur.com/Y6J7ZQH.png"><h3>Genshin Impact</h3></div>
+    <div class="game"><img src="https://i.imgur.com/0y0y0y0.png"><h3>Valorant</h3></div>
+    <div class="game"><img src="https://i.imgur.com/1a1a1a1.png"><h3>Call of Duty</h3></div>
+  </div>
 
-  <label>Nomor WhatsApp</label>
-  <input type="text" id="wauser" placeholder="08xxxxxxxxxx" />
+  <div class="section">
+    <h2>Informasi Penting</h2>
+    <ul style="color:#fed7aa;line-height:1.8">
+      <li>✔️ Proses top up dilakukan secara manual oleh admin</li>
+      <li>✔️ Pembayaran via transfer / e-wallet (dikirim lewat WhatsApp)</li>
+      <li>✔️ Estimasi proses 5–15 menit setelah pembayaran</li>
+      <li>❌ Tidak menggunakan sistem otomatis</li>
+    </ul>
+  </div>
 
-  <button onclick="orderWA()">Order via WhatsApp</button>
+  <div class="section">
+    <h2>Form Order</h2>
+    <div class="order">
+      <input type="hidden" id="gameInput" />
+      <input type="text" id="userid" placeholder="User ID / Player ID" />
+      <select id="nominal">
+        <option>Pilih Nominal</option>
+      </select>
+      <input type="text" id="wauser" placeholder="Nomor WhatsApp" />
+      <button onclick="orderWA()">Order via WhatsApp</button>
+    </div>
+  </div>
 </div>
 
 <footer>
@@ -105,13 +123,54 @@
 </footer>
 
 <script>
-function orderWA() {
-  const game = document.getElementById("game").value;
-  const userid = document.getElementById("userid").value;
-  const nominal = document.getElementById("nominal").value;
-  const wauser = document.getElementById("wauser").value;
+  const nominalData = {
+    "Mobile Legends": ["86 Diamonds","172 Diamonds","257 Diamonds","344 Diamonds","706 Diamonds","Twilight Pass"],
+    "Arena of Valor": ["40 Vouchers","90 Vouchers","230 Vouchers"],
+    "League of Legends Wild Rift": ["425 Wild Cores","1000 Wild Cores","1850 Wild Cores"],
 
-  const message = `Halo Admin Hanszph Store,
+    "Free Fire": ["70 Diamonds","140 Diamonds","355 Diamonds","720 Diamonds","Membership Mingguan"],
+    "PUBG Mobile": ["60 UC","325 UC","660 UC","1800 UC"],
+    "Call of Duty Mobile": ["80 CP","420 CP","880 CP","2400 CP"],
+    "Valorant": ["125 VP","420 VP","700 VP","1375 VP","2400 VP"],
+
+    "Genshin Impact": ["Blessing of the Welkin","300 Genesis Crystal","980 Genesis Crystal","1980 Genesis Crystal","3280 Genesis Crystal"],
+    "Honkai Star Rail": ["Supply Pass","300 Oneiric Shard","980 Oneiric Shard","1980 Oneiric Shard"],
+    "Tower of Fantasy": ["Monthly Pass","980 Tanium","1980 Tanium"],
+    "One Punch Man": ["Weekly Pack","Monthly Pack"],
+
+    "Clash of Clans": ["Gold Pass","500 Gems","1200 Gems","2500 Gems"],
+    "Clash Royale": ["500 Gems","1200 Gems","Pass Royale"],
+    "Rise of Kingdoms": ["Daily Chest","Monthly Bundle"],
+    "State of Survival": ["Value Pack","Hero Pack"],
+
+    "FC Mobile": ["220 FC Points","575 FC Points","2200 FC Points"],
+    "eFootball": ["130 Coins","550 Coins","1040 Coins"],
+    "NBA 2K Mobile": ["Starter Pack","Pro Pack"],
+
+    "Roblox": ["400 Robux","800 Robux","1700 Robux"],
+    "Minecraft": ["Minecoins 320","Minecoins 960"],
+    "Stumble Guys": ["250 Gems","800 Gems"],
+    "Among Us": ["Stars Pack"]
+  };
+
+  function selectGame(game){
+    document.getElementById('gameInput').value = game;
+    const nominalSelect = document.getElementById('nominal');
+    nominalSelect.innerHTML = '<option>Pilih Nominal</option>';
+    nominalData[game].forEach(n => {
+      const opt = document.createElement('option');
+      opt.textContent = n;
+      nominalSelect.appendChild(opt);
+    });
+  }
+
+  function orderWA(){
+    const game = document.getElementById('gameInput').value;
+    const userid = document.getElementById('userid').value;
+    const nominal = document.getElementById('nominal').value;
+    const wauser = document.getElementById('wauser').value;
+
+    const message = `Halo Admin Hanszph Store,
 Saya mau top up game (PROSES MANUAL)
 
 Game: ${game}
@@ -120,10 +179,9 @@ Nominal: ${nominal}
 Nomor WhatsApp: ${wauser}
 
 Terima kasih.`;
-
-  const text = encodeURIComponent(message);
-  window.open("https://wa.me/6287888117771?text=" + text);
-}
+    const text = encodeURIComponent(message);
+    window.open('https://wa.me/6287888117771?text=' + text);
+  }
 </script>
 
 </body>
