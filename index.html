@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hanszph Store – Top Up Cepat & Aman</title>
+  <title>Hanszph Store – Top Up Game Cepat & Aman</title>
   <style>
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0f172a;color:#e5e7eb}
     header{background:#020617;padding:20px;text-align:center}
     header h1{margin:0;color:#f97316}
-    header p{margin-top:6px;color:#cbd5f5}
-    .container{padding:24px}
-    input,select,button{width:100%;padding:12px;border-radius:8px;border:none;margin-top:10px}
-    button{background:#f97316;color:#020617;font-weight:bold;cursor:pointer}
-    button:hover{background:#fb923c}
-    .games{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;margin-top:20px}
-    .game{background:#020617;border-radius:12px;padding:12px;text-align:center;cursor:pointer}
-    .game:hover{outline:2px solid #f97316}
+    header p{margin:5px 0 0;color:#cbd5f5}
+    .container{padding:30px}
+    .filter{display:flex;gap:10px;margin-bottom:20px}
+    input,select{padding:10px;border-radius:8px;border:none;width:100%}
+    .games{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px}
+    .game{background:#020617;border-radius:12px;padding:10px;text-align:center;cursor:pointer}
     .game img{width:100%;border-radius:8px}
-    .section{margin-top:40px}
-    footer{text-align:center;padding:20px;color:#94a3b8}
+    .order{background:#020617;border-radius:12px;padding:20px;max-width:500px;margin:40px auto}
+    button{width:100%;padding:14px;border:none;border-radius:8px;background:#f97316;color:#020617;font-weight:bold;font-size:16px;cursor:pointer}
+    footer{text-align:center;padding:20px;background:#020617;color:#94a3b8;margin-top:40px}
   </style>
 </head>
 <body>
@@ -29,91 +28,69 @@
 </header>
 
 <div class="container">
-  <input id="search" placeholder="Cari game..." oninput="renderGames()" />
-
-  <select id="category" onchange="renderGames()">
-    <option value="">Semua Kategori</option>
-    <option>MOBA</option>
-    <option>FPS</option>
-    <option>RPG</option>
-    <option>SPORTS</option>
-    <option>SANDBOX</option>
-    <option>STRATEGY</option>
-    <option>CASUAL</option>
-  </select>
+  <div class="filter">
+    <input id="search" placeholder="Cari game..." oninput="renderGames()">
+    <select id="category" onchange="renderGames()">
+      <option value="">Semua</option>
+      <option>MOBA</option>
+      <option>FPS</option>
+      <option>RPG</option>
+      <option>SPORT</option>
+      <option>SANDBOX</option>
+    </select>
+  </div>
 
   <div id="gameList" class="games"></div>
 
-  <div class="section">
-    <h2>Form Order</h2>
-    <input type="hidden" id="gameInput" />
-    <input id="userid" placeholder="User ID" />
+  <div class="order">
+    <input type="text" id="gameInput" placeholder="Game" readonly>
+    <input type="text" id="userid" placeholder="User ID">
     <select id="nominal"><option>Pilih Nominal</option></select>
-    <input id="wauser" placeholder="Nomor WhatsApp" />
+    <input type="text" id="wauser" placeholder="Nomor WhatsApp">
     <button onclick="orderWA()">Order via WhatsApp</button>
   </div>
 </div>
 
 <footer>© 2026 Hanszph Store</footer>
 
-<!-- JSON DATA -->
-<script type="application/json" id="games-data">
-[
-  {"name":"Mobile Legends","category":"MOBA","image":"https://i.imgur.com/8QZQZQZ.png","nominals":["86 Diamonds","172 Diamonds","344 Diamonds","706 Diamonds"]},
-  {"name":"Free Fire","category":"FPS","image":"https://i.imgur.com/D9q9Z0U.png","nominals":["70 Diamonds","140 Diamonds","355 Diamonds","720 Diamonds"]},
-  {"name":"PUBG Mobile","category":"FPS","image":"https://i.imgur.com/Xn8Xq6D.png","nominals":["60 UC","325 UC","660 UC","1800 UC"]},
-  {"name":"Genshin Impact","category":"RPG","image":"https://i.imgur.com/Y6J7ZQH.png","nominals":["Blessing Welkin","980 Genesis","1980 Genesis"]},
-  {"name":"Valorant","category":"FPS","image":"https://i.imgur.com/0y0y0y0.png","nominals":["125 VP","420 VP","700 VP","1375 VP"]},
-  {"name":"Roblox","category":"SANDBOX","image":"https://i.imgur.com/9i9i9i9.png","nominals":["400 Robux","800 Robux","1700 Robux"]}
-]
-</script>
-
 <script>
 let games = []
 
 fetch('games.json')
-  .then(res => res.json())
-  .then(data => {
-    games = data
-    renderGames()
-  })
-</script>
+  .then(r => r.json())
+  .then(d => { games = d; renderGames() })
 
 function renderGames(){
-  const list = document.getElementById('gameList')
-  const q = document.getElementById('search').value.toLowerCase()
-  const cat = document.getElementById('category').value
-  list.innerHTML = ''
+  const q = search.value.toLowerCase()
+  const c = category.value
+  gameList.innerHTML = ''
 
   games.filter(g =>
     (!q || g.name.toLowerCase().includes(q)) &&
-    (!cat || g.category === cat)
+    (!c || g.category === c)
   ).forEach(g => {
-    const d = document.createElement('div')
-    d.className = 'game'
-    d.innerHTML = `<img src="${g.image}"><h4>${g.name}</h4>`
-    d.onclick = () => selectGame(g)
-    list.appendChild(d)
+    const div = document.createElement('div')
+    div.className = 'game'
+    div.innerHTML = `<img src="${g.image}"><h4>${g.name}</h4>`
+    div.onclick = () => selectGame(g)
+    gameList.appendChild(div)
   })
 }
 
 function selectGame(g){
-  document.getElementById('gameInput').value = g.name
-  const n = document.getElementById('nominal')
-  n.innerHTML = '<option>Pilih Nominal</option>'
-  g.nominals.forEach(x => {
+  gameInput.value = g.name
+  nominal.innerHTML = '<option>Pilih Nominal</option>'
+  g.nominals.forEach(n => {
     const o = document.createElement('option')
-    o.textContent = x
-    n.appendChild(o)
+    o.textContent = n
+    nominal.appendChild(o)
   })
 }
 
 function orderWA(){
-  const msg = `Halo Admin Hanszph Store\nSaya mau top up game (PROSES MANUAL)\n\nGame: ${gameInput.value}\nUser ID: ${userid.value}\nNominal: ${nominal.value}\nNomor WhatsApp: ${wauser.value}`
+  const msg = `Halo Admin Hanszph Store\n\nGame: ${gameInput.value}\nUser ID: ${userid.value}\nNominal: ${nominal.value}\nWhatsApp: ${wauser.value}`
   window.open('https://wa.me/6287888117771?text=' + encodeURIComponent(msg))
 }
-
-renderGames()
 </script>
 
 </body>
