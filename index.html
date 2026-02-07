@@ -69,7 +69,15 @@
 </script>
 
 <script>
-const games = JSON.parse(document.getElementById('games-data').textContent)
+let games = []
+
+fetch('games.json')
+  .then(res => res.json())
+  .then(data => {
+    games = data
+    renderGames()
+  })
+</script>
 
 function renderGames(){
   const list = document.getElementById('gameList')
