@@ -1,230 +1,134 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hanszph Store – Top Up Cepat & Aman</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanszph Store – Top Up Cepat & Aman</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-    }
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0f172a;color:#e5e7eb}
+header{background:#020617;padding:20px;text-align:center}
+header h1{margin:0;color:#f97316}
+header p{margin-top:6px;color:#cbd5f5}
+.container{padding:24px;max-width:1200px;margin:auto}
 
-    header {
-      background: #020617;
-      padding: 20px;
-      text-align: center;
-    }
+.search{margin:20px 0}
+.search input{width:100%;padding:14px;border-radius:10px;border:none;font-size:16px}
 
-    header h1 {
-      margin: 0;
-      color: #f97316;
-    }
+.categories{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.category{padding:8px 14px;border-radius:20px;background:#020617;cursor:pointer;font-size:14px}
+.category.active{background:#f97316;color:#020617;font-weight:bold}
 
-    header p {
-      margin-top: 6px;
-      color: #cbd5f5;
-    }
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px}
+.game{background:#020617;border-radius:14px;padding:12px;text-align:center;cursor:pointer;transition:.3s}
+.game:hover{transform:scale(1.05)}
+.game img{width:100%;border-radius:10px}
+.game h3{font-size:14px;margin-top:8px}
 
-    .container {
-      padding: 30px;
-    }
-
-    .games {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .game {
-      background: #020617;
-      border-radius: 12px;
-      padding: 12px;
-      text-align: center;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .game:hover {
-      transform: scale(1.05);
-    }
-
-    .game img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .game h3 {
-      font-size: 15px;
-      margin-top: 10px;
-    }
-
-    .section {
-      margin-top: 50px;
-    }
-
-    .order {
-      background: #020617;
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 500px;
-      margin: auto;
-    }
-
-    .order input,
-    .order select {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: none;
-    }
-
-    .order button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #f97316;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #020617;
-      margin-top: 60px;
-      color: #94a3b8;
-    }
-  </style>
+.section{margin-top:50px}
+.order{background:#020617;border-radius:14px;padding:20px;max-width:480px;margin:auto}
+.order input,.order select{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none}
+.order button{width:100%;padding:14px;border:none;border-radius:8px;background:#f97316;font-weight:bold;cursor:pointer}
+footer{text-align:center;padding:20px;background:#020617;margin-top:60px;color:#94a3b8}
+</style>
 </head>
-
 <body>
 
 <header>
-  <h1>HANSZPH STORE</h1>
-  <p>Top Up Cepat & Aman • Proses Manual</p>
+<h1>HANSZPH STORE</h1>
+<p>Top Up Cepat & Aman • Proses Manual</p>
 </header>
 
 <div class="container">
-  <h2>Pilih Game</h2>
-  <p style="color:#fdba74">Semua transaksi diproses manual oleh admin</p>
 
-  <!-- GAME LIST (HANYA 1 CONTAINER) -->
-  <div class="games">
-    <div class="game" onclick="selectGame('Mobile Legends')">
-      <img src="https://i.imgur.com/8QZQZQZ.png">
-      <h3>Mobile Legends</h3>
-    </div>
-
-    <div class="game" onclick="selectGame('Free Fire')">
-      <img src="https://i.imgur.com/D9q9Z0U.png">
-      <h3>Free Fire</h3>
-    </div>
-
-    <div class="game" onclick="selectGame('PUBG Mobile')">
-      <img src="https://i.imgur.com/Xn8Xq6D.png">
-      <h3>PUBG Mobile</h3>
-    </div>
-
-    <div class="game" onclick="selectGame('Genshin Impact')">
-      <img src="https://i.imgur.com/Y6J7ZQH.png">
-      <h3>Genshin Impact</h3>
-    </div>
-
-    <div class="game" onclick="selectGame('Honkai Star Rail')">
-      <img src="https://i.imgur.com/2b2b2b2.png">
-      <h3>Honkai Star Rail</h3>
-    </div>
-
-    <div class="game" onclick="selectGame('Valorant')">
-      <img src="https://i.imgur.com/0y0y0y0.png">
-      <h3>Valorant</h3>
-    </div>
-
-    <div class="game" onclick="selectGame('Roblox')">
-      <img src="https://i.imgur.com/9i9i9i9.png">
-      <h3>Roblox</h3>
-    </div>
-
-    <div class="game" onclick="selectGame('Clash of Clans')">
-      <img src="https://i.imgur.com/3c3c3c3.png">
-      <h3>Clash of Clans</h3>
-    </div>
-  </div>
-
-  <!-- FORM ORDER -->
-  <div class="section">
-    <h2>Form Order</h2>
-
-    <div class="order">
-      <input type="hidden" id="gameInput">
-      <input type="text" id="userid" placeholder="User ID / Player ID">
-      
-      <select id="nominal">
-        <option>Pilih Nominal</option>
-      </select>
-
-      <input type="text" id="wauser" placeholder="Nomor WhatsApp">
-      <button onclick="orderWA()">Order via WhatsApp</button>
-    </div>
-  </div>
+<div class="search">
+<input type="text" id="searchGame" placeholder="Cari game..." onkeyup="renderGames()">
 </div>
 
-<footer>
-  © 2026 Hanszph Store • Admin Manual
-</footer>
+<div class="categories" id="categories"></div>
+
+<div class="games" id="gameList"></div>
+
+<div class="section">
+<h2>Form Order</h2>
+<div class="order">
+<input type="hidden" id="gameInput">
+<input type="text" id="userid" placeholder="User ID / Player ID">
+<select id="nominal"><option>Pilih Nominal</option></select>
+<input type="text" id="wauser" placeholder="Nomor WhatsApp">
+<button onclick="orderWA()">Order via WhatsApp</button>
+</div>
+</div>
+
+</div>
+
+<footer>© 2026 Hanszph Store • Admin Manual</footer>
 
 <script>
-  const nominalData = {
-    "Mobile Legends": ["86 Diamonds","172 Diamonds","344 Diamonds","Twilight Pass"],
-    "Free Fire": ["70 Diamonds","140 Diamonds","355 Diamonds","Membership Mingguan"],
-    "PUBG Mobile": ["60 UC","325 UC","660 UC"],
-    "Genshin Impact": ["Blessing Welkin","980 Genesis","1980 Genesis"],
-    "Honkai Star Rail": ["Supply Pass","980 Shard"],
-    "Valorant": ["420 VP","700 VP","1375 VP"],
-    "Roblox": ["400 Robux","800 Robux"],
-    "Clash of Clans": ["Gold Pass","1200 Gems"]
-  };
+// ================= DATA TERPUSAT (AMAN UNTUK 100+ GAME) =================
+const gamesData = [
+  {name:'Mobile Legends',category:'MOBA',img:'https://i.imgur.com/8QZQZQZ.png',nominal:['86 Diamonds','172 Diamonds','344 Diamonds','Twilight Pass']},
+  {name:'Arena of Valor',category:'MOBA',img:'https://i.imgur.com/5e5e5e5.png',nominal:['40 Voucher','90 Voucher']},
+  {name:'Free Fire',category:'FPS',img:'https://i.imgur.com/D9q9Z0U.png',nominal:['70 Diamonds','140 Diamonds','Membership Mingguan']},
+  {name:'PUBG Mobile',category:'FPS',img:'https://i.imgur.com/Xn8Xq6D.png',nominal:['60 UC','325 UC','660 UC']},
+  {name:'Call of Duty Mobile',category:'FPS',img:'https://i.imgur.com/1a1a1a1.png',nominal:['80 CP','420 CP']},
+  {name:'Valorant',category:'FPS',img:'https://i.imgur.com/0y0y0y0.png',nominal:['420 VP','700 VP','1375 VP']},
+  {name:'Genshin Impact',category:'RPG',img:'https://i.imgur.com/Y6J7ZQH.png',nominal:['Blessing Welkin','980 Genesis','1980 Genesis']},
+  {name:'Honkai Star Rail',category:'RPG',img:'https://i.imgur.com/2b2b2b2.png',nominal:['Supply Pass','980 Shard']},
+  {name:'Clash of Clans',category:'Strategy',img:'https://i.imgur.com/3c3c3c3.png',nominal:['Gold Pass','1200 Gems']},
+  {name:'Clash Royale',category:'Strategy',img:'https://i.imgur.com/4d4d4d4.png',nominal:['500 Gems','Pass Royale']},
+  {name:'FC Mobile',category:'Sports',img:'https://i.imgur.com/7g7g7g7.png',nominal:['220 FC Points','575 FC Points']},
+  {name:'eFootball',category:'Sports',img:'https://i.imgur.com/8h8h8h8.png',nominal:['130 Coins','550 Coins']},
+  {name:'Roblox',category:'Casual',img:'https://i.imgur.com/9i9i9i9.png',nominal:['400 Robux','800 Robux']},
+  {name:'Minecraft',category:'Casual',img:'https://i.imgur.com/mcmcmc.png',nominal:['Minecoins 320','Minecoins 960']}
+];
 
-  function selectGame(game) {
-    document.getElementById("gameInput").value = game;
-    const nominal = document.getElementById("nominal");
-    nominal.innerHTML = "<option>Pilih Nominal</option>";
+let activeCategory = 'All';
 
-    nominalData[game].forEach(item => {
-      const opt = document.createElement("option");
-      opt.textContent = item;
-      nominal.appendChild(opt);
-    });
-  }
+function initCategories(){
+  const cats = ['All',...new Set(gamesData.map(g=>g.category))];
+  const el = document.getElementById('categories');
+  el.innerHTML='';
+  cats.forEach(c=>{
+    const div=document.createElement('div');
+    div.className='category'+(c==='All'?' active':'');
+    div.innerText=c;
+    div.onclick=()=>{activeCategory=c;document.querySelectorAll('.category').forEach(x=>x.classList.remove('active'));div.classList.add('active');renderGames();};
+    el.appendChild(div);
+  });
+}
 
-  function orderWA() {
-    const game = document.getElementById("gameInput").value;
-    const user = document.getElementById("userid").value;
-    const nominal = document.getElementById("nominal").value;
-    const wa = document.getElementById("wauser").value;
+function renderGames(){
+  const list=document.getElementById('gameList');
+  const q=document.getElementById('searchGame').value.toLowerCase();
+  list.innerHTML='';
 
-    const message =
-`Halo Admin Hanszph Store
-Saya mau top up game (PROSES MANUAL)
+  gamesData.filter(g=>
+    (activeCategory==='All'||g.category===activeCategory) &&
+    g.name.toLowerCase().includes(q)
+  ).forEach(g=>{
+    const card=document.createElement('div');
+    card.className='game';
+    card.onclick=()=>selectGame(g);
+    card.innerHTML=`<img src="${g.img}"><h3>${g.name}</h3>`;
+    list.appendChild(card);
+  });
+}
 
-Game: ${game}
-User ID: ${user}
-Nominal: ${nominal}
-Nomor WhatsApp: ${wa}
+function selectGame(game){
+  document.getElementById('gameInput').value=game.name;
+  const sel=document.getElementById('nominal');
+  sel.innerHTML='<option>Pilih Nominal</option>';
+  game.nominal.forEach(n=>{const o=document.createElement('option');o.textContent=n;sel.appendChild(o);});
+}
 
-Terima kasih.`;
+function orderWA(){
+  const msg=`Halo Admin Hanszph Store\nSaya mau top up game (PROSES MANUAL)\n\nGame: ${gameInput.value}\nUser ID: ${userid.value}\nNominal: ${nominal.value}\nNomor WhatsApp: ${wauser.value}\n\nTerima kasih.`;
+  window.open('https://wa.me/6287888117771?text='+encodeURIComponent(msg));
+}
 
-    window.open(
-      "https://wa.me/6287888117771?text=" + encodeURIComponent(message)
-    );
-  }
+initCategories();
+renderGames();
 </script>
 
 </body>
