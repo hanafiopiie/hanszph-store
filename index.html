@@ -1,179 +1,111 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanszph Store – Top Up Cepat & Aman</title>
-
-<style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0f172a;color:#e5e7eb}
-header{background:#020617;padding:20px;text-align:center}
-header h1{margin:0;color:#f97316}
-header p{margin-top:6px;color:#cbd5f5}
-.container{padding:24px;max-width:1200px;margin:auto}
-
-.search{margin:20px 0}
-.search input{width:100%;padding:14px;border-radius:10px;border:none;font-size:16px}
-
-.categories{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
-.category{padding:8px 14px;border-radius:20px;background:#020617;cursor:pointer;font-size:14px}
-.category.active{background:#f97316;color:#020617;font-weight:bold}
-
-.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px}
-.game{background:#020617;border-radius:14px;padding:12px;text-align:center;cursor:pointer;transition:.3s}
-.game:hover{transform:scale(1.05)}
-.game img{width:100%;border-radius:10px}
-.game h3{font-size:14px;margin-top:8px}
-
-.section{margin-top:50px}
-.order{background:#020617;border-radius:14px;padding:20px;max-width:480px;margin:auto}
-.order input,.order select{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none}
-.order button{width:100%;padding:14px;border:none;border-radius:8px;background:#f97316;font-weight:bold;cursor:pointer}
-footer{text-align:center;padding:20px;background:#020617;margin-top:60px;color:#94a3b8}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hanszph Store – Top Up Cepat & Aman</title>
+  <style>
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0f172a;color:#e5e7eb}
+    header{background:#020617;padding:20px;text-align:center}
+    header h1{margin:0;color:#f97316}
+    header p{margin-top:6px;color:#cbd5f5}
+    .container{padding:24px}
+    input,select,button{width:100%;padding:12px;border-radius:8px;border:none;margin-top:10px}
+    button{background:#f97316;color:#020617;font-weight:bold;cursor:pointer}
+    button:hover{background:#fb923c}
+    .games{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;margin-top:20px}
+    .game{background:#020617;border-radius:12px;padding:12px;text-align:center;cursor:pointer}
+    .game:hover{outline:2px solid #f97316}
+    .game img{width:100%;border-radius:8px}
+    .section{margin-top:40px}
+    footer{text-align:center;padding:20px;color:#94a3b8}
+  </style>
 </head>
 <body>
 
 <header>
-<h1>HANSZPH STORE</h1>
-<p>Top Up Cepat & Aman • Proses Manual</p>
+  <h1>HANSZPH STORE</h1>
+  <p>Top Up Cepat & Aman • Proses Manual</p>
 </header>
 
 <div class="container">
+  <input id="search" placeholder="Cari game..." oninput="renderGames()" />
 
-<div class="search">
-<input type="text" id="searchGame" placeholder="Cari game..." onkeyup="renderGames()">
+  <select id="category" onchange="renderGames()">
+    <option value="">Semua Kategori</option>
+    <option>MOBA</option>
+    <option>FPS</option>
+    <option>RPG</option>
+    <option>SPORTS</option>
+    <option>SANDBOX</option>
+    <option>STRATEGY</option>
+    <option>CASUAL</option>
+  </select>
+
+  <div id="gameList" class="games"></div>
+
+  <div class="section">
+    <h2>Form Order</h2>
+    <input type="hidden" id="gameInput" />
+    <input id="userid" placeholder="User ID" />
+    <select id="nominal"><option>Pilih Nominal</option></select>
+    <input id="wauser" placeholder="Nomor WhatsApp" />
+    <button onclick="orderWA()">Order via WhatsApp</button>
+  </div>
 </div>
 
-<div class="categories" id="categories"></div>
+<footer>© 2026 Hanszph Store</footer>
 
-<div class="games" id="gameList"></div>
-
-<div class="section">
-<h2>Form Order</h2>
-<div class="order">
-<input type="hidden" id="gameInput">
-<input type="text" id="userid" placeholder="User ID / Player ID">
-<select id="nominal"><option>Pilih Nominal</option></select>
-<input type="text" id="wauser" placeholder="Nomor WhatsApp">
-<button onclick="orderWA()">Order via WhatsApp</button>
-</div>
-</div>
-
-</div>
-
-<footer>© 2026 Hanszph Store • Admin Manual</footer>
+<!-- JSON DATA -->
+<script type="application/json" id="games-data">
+[
+  {"name":"Mobile Legends","category":"MOBA","image":"https://i.imgur.com/8QZQZQZ.png","nominals":["86 Diamonds","172 Diamonds","344 Diamonds","706 Diamonds"]},
+  {"name":"Free Fire","category":"FPS","image":"https://i.imgur.com/D9q9Z0U.png","nominals":["70 Diamonds","140 Diamonds","355 Diamonds","720 Diamonds"]},
+  {"name":"PUBG Mobile","category":"FPS","image":"https://i.imgur.com/Xn8Xq6D.png","nominals":["60 UC","325 UC","660 UC","1800 UC"]},
+  {"name":"Genshin Impact","category":"RPG","image":"https://i.imgur.com/Y6J7ZQH.png","nominals":["Blessing Welkin","980 Genesis","1980 Genesis"]},
+  {"name":"Valorant","category":"FPS","image":"https://i.imgur.com/0y0y0y0.png","nominals":["125 VP","420 VP","700 VP","1375 VP"]},
+  {"name":"Roblox","category":"SANDBOX","image":"https://i.imgur.com/9i9i9i9.png","nominals":["400 Robux","800 Robux","1700 Robux"]}
+]
+</script>
 
 <script>
-// ================= DATA TERPUSAT (AMAN UNTUK 100+ GAME) =================
-const gamesData = [
-// ================= MOBA =================
-{name:'Mobile Legends',category:'MOBA',img:'https://i.imgur.com/8QZQZQZ.png',nominal:['86 Diamonds','172 Diamonds','344 Diamonds','Twilight Pass']},
-{name:'Arena of Valor',category:'MOBA',img:'https://i.imgur.com/5e5e5e5.png',nominal:['40 Voucher','90 Voucher']},
-{name:'League of Legends Wild Rift',category:'MOBA',img:'https://i.imgur.com/6f6f6f6.png',nominal:['425 WC','1000 WC']},
-{name:'Honor of Kings',category:'MOBA',img:'https://i.imgur.com/hok.png',nominal:['60 Tokens','300 Tokens']},
-{name:'MARVEL Super War',category:'MOBA',img:'https://i.imgur.com/msw.png',nominal:['Star Credits']},
-{name:'Onmyoji Arena',category:'MOBA',img:'https://i.imgur.com/oa.png',nominal:['Jade Pack']},
-{name:'Extraordinary Ones',category:'MOBA',img:'https://i.imgur.com/eo.png',nominal:['Star Pack']},
-
-// ================= FPS / SHOOTER =================
-{name:'Free Fire',category:'FPS',img:'https://i.imgur.com/D9q9Z0U.png',nominal:['70 Diamonds','140 Diamonds','Membership Mingguan']},
-{name:'PUBG Mobile',category:'FPS',img:'https://i.imgur.com/Xn8Xq6D.png',nominal:['60 UC','325 UC','660 UC']},
-{name:'Call of Duty Mobile',category:'FPS',img:'https://i.imgur.com/1a1a1a1.png',nominal:['80 CP','420 CP']},
-{name:'Valorant',category:'FPS',img:'https://i.imgur.com/0y0y0y0.png',nominal:['420 VP','700 VP','1375 VP']},
-{name:'Point Blank',category:'FPS',img:'https://i.imgur.com/pb.png',nominal:['1200 Cash','2400 Cash']},
-{name:'CrossFire',category:'FPS',img:'https://i.imgur.com/cf.png',nominal:['1000 CF','5000 CF']},
-{name:'Apex Legends Mobile',category:'FPS',img:'https://i.imgur.com/apex.png',nominal:['Syndicate Gold']},
-{name:'Standoff 2',category:'FPS',img:'https://i.imgur.com/so2.png',nominal:['Gold Pack']},
-{name:'Critical Ops',category:'FPS',img:'https://i.imgur.com/cop.png',nominal:['Credits']},
-{name:'Sausage Man',category:'FPS',img:'https://i.imgur.com/sm.png',nominal:['Candy Pack']},
-
-// ================= RPG / ANIME =================
-{name:'Genshin Impact',category:'RPG',img:'https://i.imgur.com/Y6J7ZQH.png',nominal:['Blessing Welkin','980 Genesis','1980 Genesis']},
-{name:'Honkai Star Rail',category:'RPG',img:'https://i.imgur.com/2b2b2b2.png',nominal:['Supply Pass','980 Shard']},
-{name:'Tower of Fantasy',category:'RPG',img:'https://i.imgur.com/tftftf.png',nominal:['Monthly Pass','980 Tanium']},
-{name:'Black Desert Mobile',category:'RPG',img:'https://i.imgur.com/bdm.png',nominal:['Pearl Pack']},
-{name:'Ragnarok X',category:'RPG',img:'https://i.imgur.com/rox.png',nominal:['Crystal','Monthly Pass']},
-{name:'Ragnarok Origin',category:'RPG',img:'https://i.imgur.com/ro.png',nominal:['Diamond Pack']},
-{name:'Dragon Raja',category:'RPG',img:'https://i.imgur.com/dr.png',nominal:['Coupons','Monthly Pass']},
-{name:'LifeAfter',category:'RPG',img:'https://i.imgur.com/la.png',nominal:['Membership','Credits']},
-{name:'Seven Knights Idle',category:'RPG',img:'https://i.imgur.com/sk.png',nominal:['Ruby Pack']},
-{name:'AFK Arena',category:'RPG',img:'https://i.imgur.com/afk.png',nominal:['Diamond Pack']},
-{name:'Summoners War',category:'RPG',img:'https://i.imgur.com/sw.png',nominal:['Crystal Pack']},
-
-// ================= STRATEGY =================
-{name:'Clash of Clans',category:'Strategy',img:'https://i.imgur.com/3c3c3c3.png',nominal:['Gold Pass','1200 Gems']},
-{name:'Clash Royale',category:'Strategy',img:'https://i.imgur.com/4d4d4d4.png',nominal:['500 Gems','Pass Royale']},
-{name:'Rise of Kingdoms',category:'Strategy',img:'https://i.imgur.com/rokrok.png',nominal:['Daily Chest','Monthly Bundle']},
-{name:'State of Survival',category:'Strategy',img:'https://i.imgur.com/sossos.png',nominal:['Value Pack','Hero Pack']},
-{name:'Lords Mobile',category:'Strategy',img:'https://i.imgur.com/lm.png',nominal:['Gem Pack']},
-{name:'King of Avalon',category:'Strategy',img:'https://i.imgur.com/koa.png',nominal:['Gold Pack']},
-{name:'Evony',category:'Strategy',img:'https://i.imgur.com/ev.png',nominal:['Resource Pack']},
-
-// ================= SPORTS =================
-{name:'FC Mobile',category:'Sports',img:'https://i.imgur.com/7g7g7g7.png',nominal:['220 FC Points','575 FC Points']},
-{name:'eFootball',category:'Sports',img:'https://i.imgur.com/8h8h8h8.png',nominal:['130 Coins','550 Coins']},
-{name:'NBA 2K Mobile',category:'Sports',img:'https://i.imgur.com/nba2k.png',nominal:['Starter Pack','Pro Pack']},
-{name:'8 Ball Pool',category:'Sports',img:'https://i.imgur.com/8bp.png',nominal:['Cash Pack']},
-{name:'FIFA Online',category:'Sports',img:'https://i.imgur.com/fo.png',nominal:['FP Pack']},
-
-// ================= CASUAL / POPULER =================
-{name:'Roblox',category:'Casual',img:'https://i.imgur.com/9i9i9i9.png',nominal:['400 Robux','800 Robux']},
-{name:'Minecraft',category:'Casual',img:'https://i.imgur.com/mcmcmc.png',nominal:['Minecoins 320','Minecoins 960']},
-{name:'Stumble Guys',category:'Casual',img:'https://i.imgur.com/stumbl.png',nominal:['250 Gems','800 Gems']},
-{name:'Among Us',category:'Casual',img:'https://i.imgur.com/among.png',nominal:['Stars Pack']},
-{name:'Higgs Domino',category:'Casual',img:'https://i.imgur.com/hd.png',nominal:['1B Chip','5B Chip']},
-{name:'Coin Master',category:'Casual',img:'https://i.imgur.com/cm.png',nominal:['Spin Pack']},
-{name:'Gardenscapes',category:'Casual',img:'https://i.imgur.com/gs.png',nominal:['Coin Pack']},
-{name:'Subway Surfers',category:'Casual',img:'https://i.imgur.com/ss.png',nominal:['Key Pack']}
-];
-
-let activeCategory = 'All';
-
-function initCategories(){
-  const cats = ['All',...new Set(gamesData.map(g=>g.category))];
-  const el = document.getElementById('categories');
-  el.innerHTML='';
-  cats.forEach(c=>{
-    const div=document.createElement('div');
-    div.className='category'+(c==='All'?' active':'');
-    div.innerText=c;
-    div.onclick=()=>{activeCategory=c;document.querySelectorAll('.category').forEach(x=>x.classList.remove('active'));div.classList.add('active');renderGames();};
-    el.appendChild(div);
-  });
-}
+const games = JSON.parse(document.getElementById('games-data').textContent)
 
 function renderGames(){
-  const list=document.getElementById('gameList');
-  const q=document.getElementById('searchGame').value.toLowerCase();
-  list.innerHTML='';
+  const list = document.getElementById('gameList')
+  const q = document.getElementById('search').value.toLowerCase()
+  const cat = document.getElementById('category').value
+  list.innerHTML = ''
 
-  gamesData.filter(g=>
-    (activeCategory==='All'||g.category===activeCategory) &&
-    g.name.toLowerCase().includes(q)
-  ).forEach(g=>{
-    const card=document.createElement('div');
-    card.className='game';
-    card.onclick=()=>selectGame(g);
-    card.innerHTML=`<img src="${g.img}"><h3>${g.name}</h3>`;
-    list.appendChild(card);
-  });
+  games.filter(g =>
+    (!q || g.name.toLowerCase().includes(q)) &&
+    (!cat || g.category === cat)
+  ).forEach(g => {
+    const d = document.createElement('div')
+    d.className = 'game'
+    d.innerHTML = `<img src="${g.image}"><h4>${g.name}</h4>`
+    d.onclick = () => selectGame(g)
+    list.appendChild(d)
+  })
 }
 
-function selectGame(game){
-  document.getElementById('gameInput').value=game.name;
-  const sel=document.getElementById('nominal');
-  sel.innerHTML='<option>Pilih Nominal</option>';
-  game.nominal.forEach(n=>{const o=document.createElement('option');o.textContent=n;sel.appendChild(o);});
+function selectGame(g){
+  document.getElementById('gameInput').value = g.name
+  const n = document.getElementById('nominal')
+  n.innerHTML = '<option>Pilih Nominal</option>'
+  g.nominals.forEach(x => {
+    const o = document.createElement('option')
+    o.textContent = x
+    n.appendChild(o)
+  })
 }
 
 function orderWA(){
-  const msg=`Halo Admin Hanszph Store\nSaya mau top up game (PROSES MANUAL)\n\nGame: ${gameInput.value}\nUser ID: ${userid.value}\nNominal: ${nominal.value}\nNomor WhatsApp: ${wauser.value}\n\nTerima kasih.`;
-  window.open('https://wa.me/6287888117771?text='+encodeURIComponent(msg));
+  const msg = `Halo Admin Hanszph Store\nSaya mau top up game (PROSES MANUAL)\n\nGame: ${gameInput.value}\nUser ID: ${userid.value}\nNominal: ${nominal.value}\nNomor WhatsApp: ${wauser.value}`
+  window.open('https://wa.me/6287888117771?text=' + encodeURIComponent(msg))
 }
 
-initCategories();
-renderGames();
+renderGames()
 </script>
 
 </body>
