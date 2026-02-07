@@ -3,70 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hanszph Store – Top Up Game Cepat & Aman</title>
+  <title>Hanszph Store - Top Up Game</title>
+
   <style>
-    body {margin:0;font-family:Arial,Helvetica,sans-serif;background:#0f172a;color:#e5e7eb}
-    header {background:#020617;padding:20px;text-align:center}
-    header h1 {margin:0;color:#f97316}
-    header p {margin:5px 0 0;color:#cbd5f5}
-    .container {padding:30px}
-    .games {display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px}
-    .game {background:#020617;border-radius:12px;padding:15px;text-align:center;cursor:pointer;transition:.3s}
-    .game:hover {transform:scale(1.05);background:#020617ee}
-    .game img {width:100%;border-radius:10px}
-    .game h3 {margin:10px 0 0;font-size:16px}
-    .section {margin-top:50px}
-    .order {background:#020617;border-radius:12px;padding:20px;max-width:500px;margin:auto}
-    .order input,.order select {width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none}
-    .order button {width:100%;padding:14px;border:none;border-radius:8px;background:#f97316;color:#020617;font-weight:bold;font-size:16px;cursor:pointer}
-    .order button:hover {background:#0ea5e9}
-    footer {text-align:center;padding:20px;background:#020617;color:#94a3b8;margin-top:60px}
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff7f0;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: orange;
+      color: white;
+      padding: 16px;
+      text-align: center;
+    }
+    .container {
+      max-width: 420px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    button {
+      background: orange;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      margin: 20px 0;
+      color: #666;
+    }
   </style>
 </head>
+
 <body>
 
 <header>
-  <h1>HANSZPH STORE</h1>
-  <p>Top Up Cepat & Aman • Proses Manual</p>
+  <h2>Hanszph Store</h2>
+  <p>Top Up Cepat & Aman (Manual)</p>
 </header>
 
 <div class="container">
-  <h2>Pilih Game</h2><p style="color:#fdba74">⚠️ Semua transaksi diproses secara manual oleh admin (tanpa sistem otomatis).</p>
-  <div class="games">
-    <div class="game"><img src="https://i.imgur.com/8QZQZQZ.png"><h3>Mobile Legends</h3></div>
-    <div class="game"><img src="https://i.imgur.com/D9q9Z0U.png"><h3>Free Fire</h3></div>
-    <div class="game"><img src="https://i.imgur.com/Xn8Xq6D.png"><h3>PUBG Mobile</h3></div>
-    <div class="game"><img src="https://i.imgur.com/Y6J7ZQH.png"><h3>Genshin Impact</h3></div>
-    <div class="game"><img src="https://i.imgur.com/0y0y0y0.png"><h3>Valorant</h3></div>
-    <div class="game"><img src="https://i.imgur.com/1a1a1a1.png"><h3>Call of Duty</h3></div>
-  </div>
+  <label>Game</label>
+  <select id="game">
+    <option>Mobile Legends</option>
+    <option>Free Fire</option>
+    <option>PUBG Mobile</option>
+  </select>
 
-  <div class="section">
-    <h2>Informasi Penting</h2>
-    <ul style="color:#fed7aa;line-height:1.8">
-      <li>✔️ Proses top up dilakukan secara manual oleh admin</li>
-      <li>✔️ Pembayaran via transfer / e-wallet (dikirim lewat WhatsApp)</li>
-      <li>✔️ Estimasi proses 5–15 menit setelah pembayaran</li>
-      <li>❌ Tidak menggunakan sistem otomatis</li>
-    </ul>
-  </div>
+  <label>User ID</label>
+  <input type="text" id="userid" placeholder="Masukkan User ID" />
 
-  <div class="section">
-    <h2>Form Order</h2>
-    <div class="order">
-      <input type="text" placeholder="User ID / Player ID" />
-      <select>
-        <option>Pilih Nominal</option>
-        <option>86 Diamonds</option>
-        <option>172 Diamonds</option>
-        <option>257 Diamonds</option>
-        <option>344 Diamonds</option>
-        <option>706 Diamonds</option>
-      </select>
-      <input type="text" placeholder="Nomor WhatsApp" />
-      <button onclick="orderWA()">Order via WhatsApp</button>
-    </div>
-  </div>
+  <label>Nominal</label>
+  <select id="nominal">
+    <option>86 Diamonds</option>
+    <option>172 Diamonds</option>
+    <option>257 Diamonds</option>
+    <option>344 Diamonds</option>
+  </select>
+
+  <label>Nomor WhatsApp</label>
+  <input type="text" id="wauser" placeholder="08xxxxxxxxxx" />
+
+  <button onclick="orderWA()">Order via WhatsApp</button>
 </div>
 
 <footer>
@@ -74,19 +85,25 @@
 </footer>
 
 <script>
-  function orderWA(){
-    const message = `Halo Admin Hanszph Store,
+function orderWA() {
+  const game = document.getElementById("game").value;
+  const userid = document.getElementById("userid").value;
+  const nominal = document.getElementById("nominal").value;
+  const wauser = document.getElementById("wauser").value;
+
+  const message = `Halo Admin Hanszph Store,
 Saya mau top up game (PROSES MANUAL)
 
-Game:
-User ID:
-Nominal:
-Nomor WhatsApp:
+Game: ${game}
+User ID: ${userid}
+Nominal: ${nominal}
+Nomor WhatsApp: ${wauser}
 
 Terima kasih.`;
-    const text = encodeURIComponent(message);
-    window.open('https://wa.me/6287888117771?text=' + text);
-  }
+
+  const text = encodeURIComponent(message);
+  window.open("https://wa.me/6287888117771?text=" + text);
+}
 </script>
 
 </body>
