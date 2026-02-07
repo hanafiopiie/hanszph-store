@@ -5,22 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hanszph Store – Top Up Game Cepat & Aman</title>
   <style>
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0f172a;color:#e5e7eb}
-    header{background:#020617;padding:20px;text-align:center}
-    header h1{margin:0;color:#f97316}
-    header p{margin:5px 0 0;color:#cbd5f5}
-    .container{padding:30px}
-    .filter{display:flex;gap:10px;margin-bottom:20px}
-    input,select{padding:10px;border-radius:8px;border:none;width:100%}
-    .games{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px}
-    .game{background:#020617;border-radius:12px;padding:10px;text-align:center;cursor:pointer}
-    .game img{width:100%;border-radius:8px}
-    .order{background:#020617;border-radius:12px;padding:20px;max-width:500px;margin:40px auto}
-    button{width:100%;padding:14px;border:none;border-radius:8px;background:#f97316;color:#020617;font-weight:bold;font-size:16px;cursor:pointer}
-    footer{text-align:center;padding:20px;background:#020617;color:#94a3b8;margin-top:40px}
-  </style>
+:root{
+  --orange:#f97316;
+  --dark:#020617;
+  --card:#020617;
+  --bg:#0f172a;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(180deg,#020617,#0f172a);color:var(--text)}
+header{background:radial-gradient(circle at top,var(--orange),#ea580c);padding:28px 20px;text-align:center;color:#020617}
+header h1{margin:0;font-size:28px;font-weight:800;letter-spacing:1px}
+header p{margin:6px 0 0;font-weight:600}
+.container{padding:32px;max-width:1200px;margin:auto}
+.filter{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+input,select{padding:12px 14px;border-radius:14px;border:none;width:100%;font-size:14px;background:#020617;color:var(--text)}
+input::placeholder{color:var(--muted)}
+.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px}
+.game{background:linear-gradient(180deg,#020617,#020617cc);border-radius:20px;padding:14px;text-align:center;cursor:pointer;transition:.25s;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.game:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,.55)}
+.game img{width:100%;height:120px;object-fit:cover;border-radius:14px}
+.game h4{margin:12px 0 0;font-size:15px}
+.order{background:linear-gradient(180deg,#020617,#020617cc);border-radius:22px;padding:24px;max-width:520px;margin:50px auto;box-shadow:0 20px 40px rgba(0,0,0,.6)}
+.order input,.order select{margin-bottom:12px}
+button{width:100%;padding:16px;border:none;border-radius:16px;background:linear-gradient(135deg,var(--orange),#fb923c);color:#020617;font-weight:800;font-size:16px;cursor:pointer;transition:.25s}
+button:hover{transform:scale(1.03)}
+footer{text-align:center;padding:24px;background:#020617;color:var(--muted);margin-top:60px}
+@media(max-width:600px){header h1{font-size:22px}.game img{height:100px}}
+</style>
 </head>
 <body>
+
+<header>
+  <h1>HANSZPH STORE</h1>
+  <p>Top Up Cepat & Aman • Proses Manual</p>
+</header>
+
+<div class="container">
+  <div class="filter">
+    <input id="search" placeholder="Cari game..." oninput="renderGames()">
+    <select id="category" onchange="renderGames()">
+      <option value="">Semua</option>
+      <option>MOBA</option>
+      <option>FPS</option>
+      <option>RPG</option>
+      <option>SPORT</option>
+      <option>SANDBOX</option>
+    </select>
+  </div>
+
+  <div id="gameList" class="games"></div>
+
+  <div class="order">
+    <input type="text" id="gameInput" placeholder="Game" readonly>
+    <input type="text" id="userid" placeholder="User ID">
+    <select id="nominal"><option>Pilih Nominal</option></select>
+    <input type="text" id="wauser" placeholder="Nomor WhatsApp">
+    <button onclick="orderWA()">Order via WhatsApp</button>
+  </div>
+</div>
+
+<footer>© 2026 Hanszph Store</footer>
+
+<script>
+let games = []
+
+fetch('games.json')
+  .then(r => r.json())
+  .then(d => { games = d; renderGames() })
+
+function renderGames(){
+  const q = search.value.toLowerCase()
+  const c = category.value
+  gameList.innerHTML = ''
+
+  games.filter(g =>
+    (!q || g.name.toLowerCase().includes(q)) &&
+    (!c || g.category === c)
+  ).forEach(g => {
+    const div = document.createElement('div')
+    div.className = 'game'
+    div.innerHTML = `<img src="${g.image}"><h4>${g.name}</h4>`
+    div.onclick = () => selectGame(g)
+    gameList.appendChild(div)
+  })
+}
+
+function selectGame(g){
+  gameInput.value = g.name
+  nominal.innerHTML = '<option>Pilih Nominal</option>'
+  g.nominals.forEach(n => {
+    const o = document.createElement('option')
+    o.textContent = n
+    nominal.appendChild(o)
+  })
+}
+
+function orderWA(){
+  const msg = `Halo Admin Hanszph Store
+
+Game: ${gameInput.value}
+User ID: ${userid.value}
+Nominal: ${nominal.value}
+WhatsApp: ${wauser.value}`
+  window.open('https://wa.me/6287888117771?text=' + encodeURIComponent(msg))
+}
+</script>
+
+</body>
+</html>
 
 <header>
   <h1>HANSZPH STORE</h1>
